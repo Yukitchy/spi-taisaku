@@ -36,6 +36,12 @@ const out = bank.map(q => JSON.stringify(q)).join(",\n");
 // const だと window に乗らず drill.html から読めないので window に直接置く
 fs.writeFileSync(path + "/questions.js", "/* SPI問題バンク（オリジナル類題）自動生成: node build.js */\nwindow.BANK=[\n" + out + "\n];\n");
 
+// 問題数が変わったらブラウザのキャッシュを外す（drill.html の読み込みURLに版を付ける）
+const drill = path + "/drill.html";
+let d = fs.readFileSync(drill, "utf8");
+d = d.replace(/<script src="questions\.js(\?v=\d+)?"><\/script>/, '<script src="questions.js?v=' + bank.length + '"></script>');
+fs.writeFileSync(drill, d);
+
 const by = {};
 bank.forEach(q => by[q.t] = (by[q.t] || 0) + 1);
 console.log("---\n合計 " + bank.length + "問（言語 " + bank.filter(q => q.c === "言語").length + " / 非言語 " + bank.filter(q => q.c === "非言語").length + "）");

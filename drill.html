@@ -178,7 +178,7 @@
 </div>
 
 </div>
-<script src="questions.js"></script>
+<script src="questions.js?v=177"></script>
 <script>
 /* ---------- 問題データ（オリジナル類題／本番の出題形式に準拠） ---------- */
 const Q=window.BANK||[];
@@ -192,7 +192,7 @@ let totalLeft=0, frozenS=null; const TOTAL=720, HONBAN_N=120;   /* 本番と同�
 let LANG="ja"; try{ LANG=localStorage.getItem("spi_lang")==="en"?"en":"ja"; }catch(e){}
 const L=(ja,en)=>LANG==="en"?en:ja;
 const TYPE_EN={"二語の関係":"Word-pair relationships","語句の意味":"Word meanings","語句の用法":"Word usage",
-"文の並べ替え":"Sentence ordering","空欄補充":"Fill in the blank","長文読解":"Reading comprehension",
+"文の並べ替え":"Sentence ordering","文の挿入":"Sentence insertion","空欄補充":"Fill in the blank","長文読解":"Reading comprehension",
 "推論（順位）":"Reasoning \u2014 ranking","推論（位置）":"Reasoning \u2014 position","推論（内訳・数）":"Reasoning \u2014 quantities",
 "推論（うそつき）":"Reasoning \u2014 who is lying","推論（対戦）":"Reasoning \u2014 tournaments","推論（命題）":"Reasoning \u2014 logic",
 "損益算":"Profit and loss","料金の割引":"Discounts","代金の精算":"Splitting costs","割合と比":"Ratios and percentages",
