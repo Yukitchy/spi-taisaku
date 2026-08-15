@@ -350,7 +350,8 @@ function finish(){
   const j=$("rJudge");
   if(set==="honban"){
     const acc=done?Math.round(ok/done*100):0;
-    $("rScore").innerHTML=ok+'<small> / '+done+L("（解答した問題のうち "," correct of ")+acc+'%）</small>';
+    $("rScore").innerHTML=L(ok+'<small> / '+done+'問（解答した分の正答率 '+acc+'%）</small>',
+                            ok+'<small> of '+done+' answered &mdash; '+acc+'% correct</small>');
     j.textContent=L("120問中 "+done+"問に到達","Reached "+done+" of "+n+" questions");
     j.className="judge "+(done>=60?"pass":"fail");
     $("rTime").textContent=L(
