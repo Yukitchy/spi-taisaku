@@ -70,59 +70,68 @@
   .rev{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:14.5px}
   .rev .h{font-weight:800;margin-bottom:6px}
   .rev.miss{border-color:#f3d3d8;background:var(--tint)}
-  @media(max-width:600px){.wrap{padding:16px 13px 70px}h1{font-size:1.5rem}.qtext{font-size:16px}}
+  .langbtn{position:fixed;top:14px;right:14px;z-index:60;background:var(--paper);border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:9px 20px;font-weight:800;font-size:14px;font-family:var(--body);cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.10)}
+  body.lang-en .en{display:none}
+  @media(max-width:600px){.wrap{padding:16px 13px 70px}h1{font-size:1.5rem}.qtext{font-size:16px}.langbtn{top:8px;right:8px;padding:7px 15px;font-size:13px}}
 </style>
 </head>
 <body>
+<button class="langbtn" id="langBtn">English</button>
 <div class="wrap">
 
 <!-- ============ START ============ -->
 <div id="start">
   <p class="eyebrow">SPI 模試ドリル / MOCK TEST</p>
-  <h1>本番と同じ形式で解いてみる</h1>
+  <h1 data-en="Practice under real test conditions">本番と同じ形式で解いてみる</h1>
   <p class="en">Answer under real test-center conditions: one timer per question, no going back.</p>
 
   <div class="card">
-    <h2>受ける前に</h2>
-    <div class="note">
+    <h2 data-en="Before you start">受ける前に</h2>
+    <div class="note" data-en="<b>Your test (Rakuten Mobile, Software Engineering / mid-August)</b><br>Japanese: <b>120 questions in 12 minutes</b> (6 seconds each) &plus; English: <b>75 questions in 65 minutes</b>. Part 1 is online at home, Part 2 is in person in Ota-machi.<br><br>The Japanese section is a <b>speed test of what you already know</b>, so this drill does not copy that speed for every set. What you build here is <b>the method for each question type</b>. Once you know the method, the answer comes the moment you read the question.<br><b>Lock in the methods first, then drill vocabulary to build speed</b> — in that order.<br><br>Note: the questions and explanations stay in Japanese on purpose. Your real test is in Japanese.">
       <b>あなたの試験（楽天モバイル ソフトウェアエンジニアリング／8月中旬）</b><br>
       日本語 <b>120問 / 12分</b>（1問6秒）＋ 英語 <b>75問 / 65分</b>、パート1は自宅オンライン、パート2は大田町で対面。<br><br>
       日本語セクションは<b>覚えているかどうかを問う速度勝負</b>なので、このドリルはそのままの速さでは再現していません。
       ここで身につけるのは<b>「解き方の型」</b>です。型を知っていれば、本番で読んだ瞬間に答えが出せるようになります。
       <b>まず「解き方」をここで固め、そのあと語彙を反復して速度を上げる</b>——この順番でいきましょう。
     </div>
-    <h3>本番のルール（このドリルも同じにしてあります）</h3>
+    <h3 data-en="Real test rules (this drill follows them)">本番のルール（このドリルも同じにしてあります）</h3>
     <ul>
-      <li><b>1問ごとに制限時間があります。</b>画面下のバーが 緑 → 黄 → 赤 と減っていきます</li>
-      <li><b>時間切れになると、答えていなくても自動で次の問題に進みます</b></li>
-      <li><b>前の問題には戻れません</b></li>
-      <li><b>電卓は使えません。</b>紙と鉛筆を用意して、筆算で計算してください</li>
+      <li data-en="<b>Every question has a time limit.</b> The bar at the top runs down green &rarr; yellow &rarr; red."><b>1問ごとに制限時間があります。</b>画面下のバーが 緑 → 黄 → 赤 と減っていきます</li>
+      <li data-en="<b>When time runs out, it moves on by itself</b> — answered or not."><b>時間切れになると、答えていなくても自動で次の問題に進みます</b></li>
+      <li data-en="<b>You cannot go back</b> to a previous question."><b>前の問題には戻れません</b></li>
+      <li data-en="<b>No calculator.</b> Keep paper and a pencil next to you and work it out by hand."><b>電卓は使えません。</b>紙と鉛筆を用意して、筆算で計算してください</li>
     </ul>
-    <h3>準備するもの / What you need</h3>
-    <p>紙・鉛筆・静かな部屋。<span class="en" style="display:inline">Paper, a pencil, and a quiet room. No calculator.</span></p>
+    <h3 data-en="What you need">準備するもの / What you need</h3>
+    <p data-en="Paper, a pencil, and a quiet room. No calculator.">紙・鉛筆・静かな部屋。<span class="en" style="display:inline">Paper, a pencil, and a quiet room. No calculator.</span></p>
   </div>
 
   <div class="card">
-    <h2>設定</h2>
-    <h3>分野 / Section</h3>
+    <h2 data-en="Settings">設定</h2>
+    <h3 data-en="Length">長さ / Length</h3>
+    <div class="seg" id="setSel">
+      <button data-v="std" aria-pressed="true" data-en="Standard (36 questions, about 30 min)">標準（36問・約30分）</button>
+      <button data-v="honban" aria-pressed="false" data-en="Real length (120 questions in 12 minutes)">本番と同じ長さ（120問 / 12分）</button>
+    </div>
+    <p class="hint" id="setNote" data-en="<b>Real length</b> reproduces the pace of your actual Japanese section: 120 questions, one 12-minute countdown for the whole set, no per-question timer. You are not expected to finish — the point is to feel the speed and learn to skip fast. Verbal questions come first."><b>本番と同じ長さ</b>は、あなたの日本語セクションのペースを再現します。120問・全体で12分の一括タイマー（1問ごとの制限時間なし）。<b>解き切れなくて当たり前</b>で、速さの体感と「捨てて次へ行く」練習が目的です。言語問題から先に出ます。</p>
+    <h3 data-en="Section">分野 / Section</h3>
     <div class="seg" id="secSel">
-      <button data-v="all" aria-pressed="true">全部（36問・約30分）</button>
-      <button data-v="言語" aria-pressed="false">言語だけ（18問）</button>
-      <button data-v="非言語" aria-pressed="false">非言語だけ（18問）</button>
+      <button data-v="all" aria-pressed="true" data-en="All">全部</button>
+      <button data-v="言語" aria-pressed="false" data-en="Verbal only">言語だけ</button>
+      <button data-v="非言語" aria-pressed="false" data-en="Non-verbal only">非言語だけ</button>
     </div>
-    <h3>モード / Mode</h3>
+    <h3 data-en="Mode">モード / Mode</h3>
     <div class="seg" id="modeSel">
-      <button data-v="real" aria-pressed="true">本番モード（時間制限・戻れない）</button>
-      <button data-v="practice" aria-pressed="false">練習モード（時間無制限・すぐ解説）</button>
+      <button data-v="real" aria-pressed="true" data-en="Test mode (timed, no going back)">本番モード（時間制限・戻れない）</button>
+      <button data-v="practice" aria-pressed="false" data-en="Practice mode (no timer, instant explanation)">練習モード（時間無制限・すぐ解説）</button>
     </div>
-    <p style="margin-top:18px"><button class="btn" id="startBtn">はじめる / Start</button></p>
+    <p style="margin-top:18px"><button class="btn" id="startBtn" data-en="Start">はじめる / Start</button></p>
     <p class="hint" id="bankInfo"></p>
-    <p class="hint">毎回ちがう問題が出ます（まだ解いていない問題が優先されます）。1回の出題数は36問のまま、分野の内訳も本番と同じ比率です。<br>
-      <button id="resetBtn" style="background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;font-size:13px">出題の履歴をリセット</button></p>
-    <p class="hint">※ 出題はレッスン用のオリジナル類題です。実際の試験問題ではありません。</p>
+    <p class="hint" data-en="You get different questions every time (unseen questions come first). Question counts stay the same, and the mix of topics follows the real test.">毎回ちがう問題が出ます（まだ解いていない問題が優先されます）。分野の内訳も本番と同じ比率です。</p>
+    <p class="hint"><button id="resetBtn" data-en="Reset question history" style="background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;font-size:13px">出題の履歴をリセット</button></p>
+    <p class="hint" data-en="These are original practice questions written for your lessons, not real exam questions.">※ 出題はレッスン用のオリジナル類題です。実際の試験問題ではありません。</p>
   </div>
 
-  <p><a href="index.html">← レッスン1の教材にもどる</a></p>
+  <p><a href="index.html" data-en="&larr; Back to the lesson material">← レッスン1の教材にもどる</a></p>
 </div>
 
 <!-- ============ EXAM ============ -->
@@ -150,21 +159,21 @@
 <!-- ============ RESULT ============ -->
 <div id="result">
   <div class="card">
-    <p class="eyebrow">結果 / RESULT</p>
+    <p class="eyebrow" data-en="RESULT">結果 / RESULT</p>
     <div class="score" id="rScore">0<small> / 0（0%）</small></div>
-    <p><span class="judge" id="rJudge">—</span> <span class="hint">目安：正答率7割が一般的なボーダーと言われます</span></p>
+    <p><span class="judge" id="rJudge">—</span> <span class="hint" data-en="A common rule of thumb is that 70% is the passing line.">目安：正答率7割が一般的なボーダーと言われます</span></p>
     <p class="hint" id="rTime"></p>
-    <h3>分野別</h3>
+    <h3 data-en="By topic">分野別</h3>
     <table id="rTable"></table>
     <p style="margin-top:16px">
-      <button class="btn" id="againBtn">もう一度</button>
-      <button class="btn ghost" id="missBtn">間違えた問題だけやり直す</button>
+      <button class="btn" id="againBtn" data-en="Try again">もう一度</button>
+      <button class="btn ghost" id="missBtn" data-en="Redo only the ones I missed">間違えた問題だけやり直す</button>
     </p>
   </div>
   <div class="card">
-    <h2>全問の解説</h2>
+    <h2 data-en="Explanations for every question">全問の解説</h2>
     <div id="rReview"></div>
-    <p><a href="index.html">← レッスン1の教材にもどる</a></p>
+    <p><a href="index.html" data-en="&larr; Back to the lesson material">← レッスン1の教材にもどる</a></p>
   </div>
 </div>
 
@@ -176,18 +185,33 @@ const Q=window.BANK||[];
 
 /* ---------- state ---------- */
 const $=id=>document.getElementById(id);
-let pool=[],i=0,ans=[],mode="real",sec="all",tId=null,left=0,startTs=0,clkId=null;
+let pool=[],i=0,ans=[],mode="real",sec="all",set="std",tId=null,left=0,startTs=0,clkId=null;
+let totalLeft=0, frozenS=null; const TOTAL=720, HONBAN_N=120;   /* 本番と同じ長さ：120問を通しで12分 */
+
+/* ---------- 日本語 ⇄ English ---------- */
+let LANG="ja"; try{ LANG=localStorage.getItem("spi_lang")==="en"?"en":"ja"; }catch(e){}
+const L=(ja,en)=>LANG==="en"?en:ja;
+const TYPE_EN={"二語の関係":"Word-pair relationships","語句の意味":"Word meanings","語句の用法":"Word usage",
+"文の並べ替え":"Sentence ordering","空欄補充":"Fill in the blank","長文読解":"Reading comprehension",
+"推論（順位）":"Reasoning \u2014 ranking","推論（位置）":"Reasoning \u2014 position","推論（内訳・数）":"Reasoning \u2014 quantities",
+"推論（うそつき）":"Reasoning \u2014 who is lying","推論（対戦）":"Reasoning \u2014 tournaments","推論（命題）":"Reasoning \u2014 logic",
+"損益算":"Profit and loss","料金の割引":"Discounts","代金の精算":"Splitting costs","割合と比":"Ratios and percentages",
+"集合":"Sets","場合の数":"Counting","確率":"Probability","速度算":"Speed and distance","表の読み取り":"Reading tables",
+"言語":"Verbal","非言語":"Non-verbal"};
+const TE=t=>LANG==="en"?(TYPE_EN[t]||t):t;
 
 function pressed(box,v){[...box.children].forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===v)))}
 $("secSel").onclick=e=>{if(e.target.dataset.v){sec=e.target.dataset.v;pressed($("secSel"),sec)}};
 $("modeSel").onclick=e=>{if(e.target.dataset.v){mode=e.target.dataset.v;pressed($("modeSel"),mode)}};
-$("startBtn").onclick=()=>{const d=draw(sec);if(!d.length){alert("問題データが読み込めませんでした");return}begin(d)};
+$("setSel").onclick=e=>{if(e.target.dataset.v){set=e.target.dataset.v;pressed($("setSel"),set)}};
+if(location.hash==="#honban"){set="honban";pressed($("setSel"),"honban")}
+$("startBtn").onclick=()=>{const d=(set==="honban")?drawHonban(sec):draw(sec);if(!d.length){alert(L("問題データが読み込めませんでした","Could not load the question bank."));return}begin(d)};
 
 /* ---------- 出題の組み立て ----------
    毎回ランダムに選ぶが、分野ごとの出題数は本番の構成に合わせて固定する。
    同じ問題ばかり出ないよう、まだ解いていない問題を優先する（履歴はこのブラウザに保存）。 */
 const QUOTA={
-  "二語の関係":5,"語句の意味":4,"語句の用法":3,"文の並べ替え":2,"空欄補充":2,"長文読解":2,
+  "二語の関係":5,"語句の意味":4,"語句の用法":3,"文の並べ替え":2,"空欄補充":2,"長文読解":1,"文の挿入":1,
   "推論（順位）":1,"推論（位置）":1,"推論（内訳・数）":1,"推論（うそつき）":1,"推論（対戦）":1,"推論（命題）":1,
   "損益算":2,"料金の割引":1,"代金の精算":1,"割合と比":2,"集合":2,"場合の数":1,"確率":1,"速度算":1,"表の読み取り":1
 };
@@ -207,16 +231,25 @@ function draw(scope){
   });
   return out;
 }
+/* 本番と同じ長さ：言語を先に、足りない分を非言語で埋めて120問。未出題を優先。 */
+function drawHonban(scope){
+  const m=seenMap(), pick=(arr,n)=>arr.map(q=>({q,n:m[qid(q)]||0,r:Math.random()}))
+    .sort((a,b)=>a.n-b.n||a.r-b.r).slice(0,n).map(x=>x.q);
+  if(scope!=="all") return pick(Q.filter(q=>q.c===scope),HONBAN_N);
+  const go=pick(Q.filter(q=>q.c==="言語"),HONBAN_N);
+  return go.concat(pick(Q.filter(q=>q.c==="非言語"),HONBAN_N-go.length));
+}
 function bankInfo(){
   const m=seenMap(),n=Q.length,done=Q.filter(q=>m[qid(q)]).length;
   const el=$("bankInfo");
-  if(el)el.innerHTML="問題バンク <b>"+n+"問</b>（言語"+Q.filter(q=>q.c==="言語").length+"／非言語"+Q.filter(q=>q.c==="非言語").length+"）　"+
-    "これまでに解いた問題 <b>"+done+" / "+n+"問</b>";
+  const jp=Q.filter(q=>q.c==="言語").length, hi=Q.filter(q=>q.c==="非言語").length;
+  if(el)el.innerHTML=L("問題バンク <b>"+n+"問</b>（言語"+jp+"／非言語"+hi+"）　これまでに解いた問題 <b>"+done+" / "+n+"問</b>",
+    "Question bank: <b>"+n+"</b> (verbal "+jp+" / non-verbal "+hi+") &nbsp; You have seen <b>"+done+" of "+n+"</b>.");
 }
-$("resetBtn")&&($("resetBtn").onclick=()=>{if(confirm("出題の履歴を消します。よろしいですか？")){localStorage.removeItem(SEEN_KEY);bankInfo()}});
+$("resetBtn")&&($("resetBtn").onclick=()=>{if(confirm(L("出題の履歴を消します。よろしいですか？","This clears your question history. Are you sure?"))){localStorage.removeItem(SEEN_KEY);bankInfo()}});
 bankInfo();
 $("againBtn").onclick=()=>{show("start")};
-$("missBtn").onclick=()=>{const m=pool.filter((q,k)=>ans[k]!==q.a);if(m.length)begin(m);else alert("全問正解でした！やり直す問題はありません。")};
+$("missBtn").onclick=()=>{const m=pool.filter((q,k)=>ans[k]!==q.a);if(m.length)begin(m);else alert(L("全問正解でした！やり直す問題はありません。","You got everything right — nothing to redo!"))};
 
 function show(id){["start","exam","result"].forEach(x=>$(x).style.display=x===id?"block":"none");window.scrollTo(0,0)}
 /* 選択肢はシャッフルする（正答の位置を覚えられないように） */
@@ -225,19 +258,37 @@ function shuffle(q){
   for(let k=idx.length-1;k>0;k--){const r=Math.floor(Math.random()*(k+1));[idx[k],idx[r]]=[idx[r],idx[k]]}
   return Object.assign({},q,{o:idx.map(k=>q.o[k]),a:idx.indexOf(q.a)});
 }
-function begin(list){markSeen(list);bankInfo();pool=list.map(shuffle);i=0;ans=[];startTs=Date.now();show("exam");clearInterval(clkId);clkId=setInterval(clock,1000);render()}
+function begin(list){
+  markSeen(list);bankInfo();pool=list.map(shuffle);i=0;ans=[];startTs=Date.now();frozenS=null;
+  show("exam");clearInterval(clkId);clearInterval(tId);
+  if(set==="honban"){ totalLeft=TOTAL; $("bFill").style.width="100%"; $("bFill").className="fill"; totalTick(); clkId=setInterval(totalTick,200); }
+  else { clkId=setInterval(clock,1000); }
+  render();
+}
+/* 本番と同じ長さ：全体で1本のカウントダウン。0で強制終了 */
+function totalTick(){
+  totalLeft-=0.2;
+  const r=Math.max(0,totalLeft/TOTAL), bar=$("bFill");
+  bar.style.width=(r*100)+"%";
+  bar.className="fill"+(r<.15?" dan":r<.4?" warn":"");
+  const s2=Math.max(0,Math.ceil(totalLeft));
+  $("bClock").textContent=L("残り ","")+String(Math.floor(s2/60)).padStart(2,"0")+":"+String(s2%60).padStart(2,"0")+L(""," left");
+  if(totalLeft<=0){clearInterval(clkId);for(let k=0;k<pool.length;k++)if(ans[k]===undefined)ans[k]=-1;finish()}
+}
 function clock(){const s=Math.floor((Date.now()-startTs)/1000);$("bClock").textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
 
 function render(){
   const q=pool[i];
-  $("bCat").textContent=q.c;$("bIdx").textContent=(i+1)+" / "+pool.length;
-  $("qType").textContent=q.t;
+  $("bCat").textContent=TE(q.c);$("bIdx").textContent=(i+1)+" / "+pool.length;
+  $("qType").textContent=TE(q.t);
   $("qPassage").innerHTML=q.p?'<div class="passage">'+q.p.replace(/\n/g,"<br>")+'</div>':"";
-  $("qText").innerHTML=q.q.replace(/\n/g,"<br>");
+  $("qText").innerHTML=((LANG==="en"&&q.qen)?q.qen:q.q).replace(/\n/g,"<br>");
   $("qFb").style.display="none";$("qFb").innerHTML="";
-  $("nextBtn").disabled=true;
-  $("nextBtn").textContent=(i===pool.length-1)?"採点する":"次へ";
-  $("qHint").textContent=mode==="real"?"時間内に選んでください（戻れません）":"答えを選ぶとすぐに解説が出ます";
+  $("nextBtn").disabled=(set!=="honban");
+  $("nextBtn").textContent=(i===pool.length-1)?L("採点する","See results"):L("次へ","Next");
+  $("qHint").textContent = set==="honban" ? L("分からなければ飛ばして次へ（全体で12分）","Skip anything you do not know — 12 minutes for the whole set")
+    : (mode==="real"?L("時間内に選んでください（戻れません）","Answer before the timer runs out. You cannot go back.")
+                    :L("答えを選ぶとすぐに解説が出ます","Pick an answer and the explanation appears right away"));
   const box=$("qOpts");box.innerHTML="";
   q.o.forEach((t,k)=>{
     const b=document.createElement("button");
@@ -248,7 +299,8 @@ function render(){
   });
   clearInterval(tId);
   const bar=$("bFill");
-  if(mode==="real"){
+  if(set==="honban"){ /* 通しタイマーなので1問ごとのバーは動かさない */ }
+  else if(mode==="real"){
     left=q.s;bar.style.width="100%";bar.className="fill";
     tId=setInterval(()=>{
       left-=.1;
@@ -266,7 +318,7 @@ function choose(k){
   ans[i]=k;
   [...$("qOpts").children].forEach((b,n)=>b.setAttribute("aria-pressed",String(n===k)));
   $("nextBtn").disabled=false;
-  if(mode==="practice"){
+  if(mode==="practice"&&set!=="honban"){
     clearInterval(tId);
     reveal();
   }
@@ -279,44 +331,75 @@ function reveal(){
     else if(n===ans[i])b.classList.add("wrong");
   });
   $("qFb").style.display="block";
-  $("qFb").innerHTML=(ok?'<b class="ok">正解</b>':'<b class="ng">不正解</b>')+"　正答："+"アイウエオ"[q.a]+"<br>"+q.e;
+  $("qFb").innerHTML=(ok?'<b class="ok">'+L("正解","Correct")+'</b>':'<b class="ng">'+L("不正解","Incorrect")+'</b>')+"　"+L("正答：","Answer: ")+"アイウエオ"[q.a]+"<br>"+q.e;
   $("nextBtn").disabled=false;
 }
 function timeUp(){
   if(ans[i]===undefined)ans[i]=-1;
-  $("qHint").textContent="時間切れ — 次の問題へ進みます";
+  $("qHint").textContent=L("時間切れ — 次の問題へ進みます","Time is up — moving to the next question");
   next();
 }
-$("nextBtn").onclick=()=>{if(mode==="real"&&ans[i]===undefined)return;next()};
+$("nextBtn").onclick=()=>{if(set!=="honban"&&mode==="real"&&ans[i]===undefined)return;if(set==="honban"&&ans[i]===undefined)ans[i]=-1;next()};
 function next(){clearInterval(tId);if(i<pool.length-1){i++;render()}else finish()}
 
 function finish(){
   clearInterval(tId);clearInterval(clkId);
-  const n=pool.length,ok=pool.filter((q,k)=>ans[k]===q.a).length,pct=Math.round(ok/n*100);
-  $("rScore").innerHTML=ok+'<small> / '+n+'（'+pct+'%）</small>';
+  const n=pool.length,ok=pool.filter((q,k)=>ans[k]===q.a).length;
+  const done=ans.filter(a=>a!==undefined&&a!==-1).length;   // 実際に解答した数
+  const s=(frozenS!==null)?frozenS:Math.floor((Date.now()-startTs)/1000); frozenS=s;
   const j=$("rJudge");
-  j.textContent=pct>=70?"ボーダーの目安に到達":"あと"+(Math.ceil(n*.7)-ok)+"問で7割";
-  j.className="judge "+(pct>=70?"pass":"fail");
-  const s=Math.floor((Date.now()-startTs)/1000);
-  $("rTime").textContent="所要時間 "+Math.floor(s/60)+"分"+(s%60)+"秒 ／ 1問あたり平均 "+Math.round(s/n)+"秒";
+  if(set==="honban"){
+    const acc=done?Math.round(ok/done*100):0;
+    $("rScore").innerHTML=ok+'<small> / '+done+L("（解答した問題のうち "," correct of ")+acc+'%）</small>';
+    j.textContent=L("120問中 "+done+"問に到達","Reached "+done+" of "+n+" questions");
+    j.className="judge "+(done>=60?"pass":"fail");
+    $("rTime").textContent=L(
+      "所要時間 "+Math.floor(s/60)+"分"+(s%60)+"秒 ／ あなたのペース 1問"+(done?(s/done).toFixed(1):"—")+"秒（本番の目安は1問6秒）",
+      "Time "+Math.floor(s/60)+"m"+(s%60)+"s / your pace: "+(done?(s/done).toFixed(1):"—")+"s per question (the real test allows about 6s)");
+  }else{
+    const pct=Math.round(ok/n*100);
+    $("rScore").innerHTML=ok+'<small> / '+n+'（'+pct+'%）</small>';
+    j.textContent=pct>=70?L("ボーダーの目安に到達","Above the usual passing line"):L("あと"+(Math.ceil(n*.7)-ok)+"問で7割","You need "+(Math.ceil(n*.7)-ok)+" more for 70%");
+    j.className="judge "+(pct>=70?"pass":"fail");
+    $("rTime").textContent=L("所要時間 "+Math.floor(s/60)+"分"+(s%60)+"秒 ／ 1問あたり平均 "+Math.round(s/n)+"秒",
+      "Time "+Math.floor(s/60)+"m"+(s%60)+"s / "+Math.round(s/n)+"s per question");
+  }
   const by={};
   pool.forEach((q,k)=>{(by[q.t]=by[q.t]||{n:0,o:0}).n++;if(ans[k]===q.a)by[q.t].o++});
-  let h="<tr><th>分野</th><th>正答</th><th>状況</th></tr>";
+  let h="<tr><th>"+L("分野","Topic")+"</th><th>"+L("正答","Correct")+"</th><th>"+L("状況","Status")+"</th></tr>";
   Object.keys(by).forEach(t=>{
     const b=by[t],r=b.o/b.n;
-    h+="<tr><td>"+t+"</td><td>"+b.o+" / "+b.n+"</td><td>"+(r===1?"◎ 得意":r>=.5?"○ もう少し":"● 要対策")+"</td></tr>";
+    h+="<tr><td>"+TE(t)+"</td><td>"+b.o+" / "+b.n+"</td><td>"+(r===1?L("◎ 得意","◎ Strong"):r>=.5?L("○ もう少し","○ Almost"):L("● 要対策","● Needs work"))+"</td></tr>";
   });
   $("rTable").innerHTML=h;
   $("rReview").innerHTML=pool.map((q,k)=>{
-    const ok=ans[k]===q.a,mine=ans[k]===-1||ans[k]===undefined?"（無回答・時間切れ）":"アイウエオ"[ans[k]]+"　"+q.o[ans[k]];
-    return '<div class="rev'+(ok?"":" miss")+'"><div class="h">'+(ok?"○":"×")+" 第"+(k+1)+"問　"+q.t+"</div>"+
+    const ok=ans[k]===q.a,mine=ans[k]===-1||ans[k]===undefined?L("（無回答・時間切れ）","(not answered)"):"アイウエオ"[ans[k]]+"　"+q.o[ans[k]];
+    return '<div class="rev'+(ok?"":" miss")+'"><div class="h">'+(ok?"○":"×")+L(" 第"+(k+1)+"問　"," Q"+(k+1)+" — ")+TE(q.t)+"</div>"+
       (q.p?'<div class="passage">'+q.p.replace(/\n/g,"<br>")+"</div>":"")+
-      "<div>"+q.q.replace(/\n/g,"<br>")+"</div>"+
-      "<div style='margin-top:8px'>あなたの解答："+mine+"<br>正答："+"アイウエオ"[q.a]+"　"+q.o[q.a]+"</div>"+
+      "<div>"+((LANG==="en"&&q.qen)?q.qen:q.q).replace(/\n/g,"<br>")+"</div>"+
+      "<div style='margin-top:8px'>"+L("あなたの解答：","Your answer: ")+mine+"<br>"+L("正答：","Correct: ")+"アイウエオ"[q.a]+"　"+q.o[q.a]+"</div>"+
       "<div style='margin-top:8px'>"+q.e+"</div></div>";
   }).join("");
   show("result");
 }
+
+/* ---------- 日本語 ⇄ English の切り替え ---------- */
+function setLang(l){
+  LANG=l; var en=(l==="en");
+  document.querySelectorAll("[data-en]").forEach(function(el){
+    if(el.dataset.ja===undefined) el.dataset.ja=el.innerHTML;
+    el.innerHTML = en ? el.dataset.en : el.dataset.ja;
+  });
+  document.body.classList.toggle("lang-en",en);
+  document.documentElement.lang = en?"en":"ja";
+  $("langBtn").textContent = en?"日本語":"English";
+  try{ localStorage.setItem("spi_lang",l); }catch(e){}
+  bankInfo();
+  if($("exam").style.display==="block") render();
+  if($("result").style.display==="block") finish();   // 結果画面も言語に追従させる
+}
+$("langBtn").onclick=function(){ setLang(LANG==="en"?"ja":"en"); };
+setLang(LANG);
 
 /* self-check: 全問に正答・選択肢・解説がそろっているか */
 console.assert(Q.length>0,"問題バンク(questions.js)が読み込めていません");

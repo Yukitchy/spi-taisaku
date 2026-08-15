@@ -56,18 +56,28 @@
   .note{background:var(--soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14.5px;margin:14px 0}
   .hw{border:2px solid var(--accent);border-radius:14px;padding:20px 22px;background:var(--paper)}
   footer{text-align:left;color:var(--sub);font-size:13px;margin-top:26px}
-  @media(max-width:600px){.vocab{columns:1}h1{font-size:1.6rem}.wrap{padding:18px 14px 60px}}
-  @media print{body{background:#fff}section,header{break-inside:avoid;border-radius:0}details{display:none}}
+  .herocta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 20px;font-weight:800;text-decoration:none;font-size:15px}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);font-weight:700}
+  .langbtn{text-decoration:none;position:fixed;top:14px;right:14px;z-index:50;background:var(--paper);border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:9px 20px;font-weight:800;font-size:14px;font-family:var(--body);cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.10)}
+  body.lang-en .en{display:none}
+  @media(max-width:600px){.vocab{columns:1}h1{font-size:1.6rem}.wrap{padding:18px 14px 60px}.langbtn{top:8px;right:8px;padding:7px 15px;font-size:13px}}
+  @media print{body{background:#fff}section,header{break-inside:avoid;border-radius:0}details{display:none}.langbtn{display:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<button class="langbtn" id="langBtn">English</button>
+<div class="wrap" id="pgJa">
 
 <header>
   <p class="eyebrow">SPI対策 レッスン 1 / SPI PREP LESSON 1</p>
   <h1>SPIって何？ 30分で全体像＋弱点さがし</h1>
   <p class="en">What is the SPI? Get the big picture and find your weak spots in 30 minutes.</p>
   <div class="meta">2026年8月15日（土）12:00–12:30 ／ 講師：ユウキ（Yuuki @ Anime Sensei）</div>
+  <div class="herocta">
+    <a class="btn" href="drill.html">▶ 模試ドリルを開く</a>
+    <a class="btn ghost" href="drill.html#honban">本番と同じ長さで解く（120問 / 12分）</a>
+  </div>
 </header>
 
 <section>
@@ -314,5 +324,274 @@
 </footer>
 
 </div>
+<div class="wrap" id="pgEn" hidden>
+
+<header>
+  <p class="eyebrow">SPI PREP LESSON 1</p>
+  <h1>What is the SPI? The big picture, and your weak spots, in 30 minutes</h1>
+  <div class="meta">Saturday, August 15, 2026, 12:00–12:30 ／ Teacher: Yuuki (Anime Sensei)</div>
+  <div class="herocta">
+    <a class="btn" href="drill.html">▶ Open the mock test</a>
+    <a class="btn ghost" href="drill.html#honban">Take it at full length (120 questions / 12 min)</a>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">1</span>Today's goals</h2>
+  <ol>
+    <li><b>Understand what the SPI is</b> — what's on it, how long it takes, where you sit it.</li>
+    <li><b>Take a mini diagnostic</b> — 3 verbal and 3 non-verbal questions, to find out where you're weak right now.</li>
+    <li><b>Decide your study plan for the next month</b> — and take homework home.</li>
+  </ol>
+  <div class="note">
+    <b>Your test — what we confirmed on Aug 15:</b><br>
+    ・Employer: <b>Rakuten Mobile, Software Engineering</b><br>
+    ・Timing: <b>mid-August</b> (exact date not yet fixed)<br>
+    ・Format: <b>Part 1 = online, at home</b> ／ <b>Part 2 = in person, in Ota-machi (大田町)</b><br>
+    ・Japanese section: <b>120 questions / 12 minutes</b>　・English section: <b>75 questions / 65 minutes</b><br>
+    <br>
+    <b>Two things I still need you to check:</b> the <b>official name of the test</b> as written in the invitation email, and <b>what to bring</b> to the in-person part — especially <b>whether a calculator is allowed</b>.
+  </div>
+</section>
+
+<section style="border:2px solid var(--accent)">
+  <h2><span class="num">!</span>What your test numbers actually mean</h2>
+  <p>This is the most important section for you. Read it first.</p>
+
+  <h3>Japanese: 120 questions / 12 minutes = 6 seconds per question</h3>
+  <p>At six seconds per question, this is <b>not a test you can think your way through</b>. There is no time to read a passage and reason about it. The only thing it can measure is <b>whether you already know the answer</b>. So your preparation is not "learn how to solve these" — it is <b>"build up vocabulary, kanji and set phrases until they come out as a reflex."</b></p>
+  <div class="note">
+    <b>But please double-check this:</b> 6 seconds per question is brutally fast even for a native Japanese speaker. Please look at the invitation again and confirm whether it really says <b>12 minutes</b>.
+    <br>・<b>If it is 12 minutes</b> → it's a pure speed test of vocabulary and kanji. There will be almost no reading comprehension and almost no arithmetic.
+    <br>・<b>If it turns out to be 60 minutes</b> → that's 30 seconds per question, i.e. a normal aptitude test that includes reading comprehension and calculation. (SCOA, for example, is a real test with 120 questions in 60 minutes.)
+    <br>The two cases need <b>completely different preparation</b>, so please confirm this before our next lesson.
+  </div>
+
+  <h3>English: 75 questions / 65 minutes = about 52 seconds per question</h3>
+  <p>This one <b>expects you to read carefully</b>, and the time limit is fairly generous. Rakuten uses English as its internal company language, so this is <b>where you can pile up points</b>. It should be a clear advantage for you compared to the Japanese section.</p>
+
+  <h3>Two parts (online at home → in person in Ota-machi)</h3>
+  <p>This two-part setup is usually a re-test used to confirm that the person who sat the online test is really you. Treat <b>the in-person part as the real exam</b>, and practise under <b>exactly the same conditions</b>: no calculator, paper and pencil, timer running.</p>
+
+  <h3>What to prepare first</h3>
+  <ol>
+    <li><b>Japanese reflexes</b> (vocabulary, kanji, word-pair relationships) — at 6 seconds a question, memory is the only thing that works.</li>
+    <li><b>English reading</b> — you have time here, so you cannot afford to drop points.</li>
+    <li><b>Non-verbal (arithmetic)</b> — minor if it really is 120 questions in 12 minutes. If we find out it's 60 minutes, this jumps to the top of the list.</li>
+  </ol>
+  <p style="font-size:14px;color:var(--sub);margin:0">Note: for engineering roles at Rakuten Group, candidates have reported a separate <b>programming test</b> in addition to the aptitude test. Please check whether one is mentioned in your invitation.</p>
+</section>
+
+<section>
+  <h2><span class="num">2</span>The big picture</h2>
+  <p>The SPI is the aptitude test used by a large share of Japanese companies in hiring. Think of it as a test of <b>speed and accuracy rather than intelligence</b>. It has two halves.</p>
+  <table>
+    <tr><th>Ability test</th><td><b>Verbal</b> (Japanese language) + <b>non-verbal</b> (arithmetic and logic). About <b>one minute per question</b> — it's a race. Roughly 35 minutes.</td></tr>
+    <tr><th>Personality test</th><td>About 300 yes/no items in about 30 minutes. There are no right answers, but <b>inconsistent answers</b> lower your reliability score.</td></tr>
+  </table>
+  <p>Some companies add an <b>English (ENG)</b> section or a <b>structural comprehension</b> section. The number of questions and the time limit change depending on how you sit it (test centre / web / paper).</p>
+
+  <h3>What comes up in the verbal section</h3>
+  <table>
+    <tr><th>Word-pair relationships</th><td>Pick the pair with the same relationship as 医者：病院 (doctor : hospital).</td></tr>
+    <tr><th>Word meanings and usage</th><td>What does 割愛する mean, and how is it used correctly?</td></tr>
+    <tr><th>Sentence ordering</th><td>Put scrambled sentences back into an order that makes sense.</td></tr>
+    <tr><th>Fill-in-the-blank and long passages</th><td>Choose the right connective; read a long text and answer questions on it.</td></tr>
+  </table>
+
+  <h3>What comes up in the non-verbal section</h3>
+  <table>
+    <tr><th>Logical reasoning</th><td>Rankings, seating positions, who-is-lying puzzles. <b>The most common type by far.</b></td></tr>
+    <tr><th>Money problems</th><td>Profit and loss (cost price, list price, profit), discounts, instalment payments.</td></tr>
+    <tr><th>Ratios and sets</th><td>Percentage calculations, and problems you solve with a Venn diagram.</td></tr>
+    <tr><th>Counting and probability</th><td>Permutations and combinations.</td></tr>
+    <tr><th>Reading tables</th><td>Pull the right number out of a data table.</td></tr>
+  </table>
+  <div class="note"><b>The key point:</b> the arithmetic in the non-verbal section is <b>junior-high level</b>. The hard part isn't the maths — it's <b>reading the Japanese question quickly and accurately</b>. So your preparation is not "maths". It's "Japanese × memorising the patterns".</div>
+</section>
+
+<section>
+  <h2><span class="num">3</span>Mini diagnostic test</h2>
+  <p>Time yourself. Say your answers out loud — mistakes are fine, the point is to find your weak spots. The questions themselves are in Japanese on purpose: that's what you'll face on the day.</p>
+
+  <div class="q">
+    <span class="time">Target: 40 sec</span>
+    <span class="tag">Verbal Q1 — Word pairs</span>
+    <p>Work out the relationship between the first two words, then pick the choice with the same relationship.</p>
+    <p><b>医者 ： 病院</b></p>
+    <ul class="choices">
+      <li>ア　教師 ： 学校</li>
+      <li>イ　看護師 ： 医者</li>
+      <li>ウ　患者 ： 診察</li>
+      <li>エ　病院 ： 建物</li>
+    </ul>
+    <details><summary>Show the answer</summary><p><b>ア (教師：学校 — teacher : school)</b>　The relationship is "person in this job : place they work". イ is two colleagues, ウ is a person and an action, and エ is "is a kind of" — all different relationships.</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">Target: 30 sec</span>
+    <span class="tag">Verbal Q2 — Word meanings</span>
+    <p>Choose the best meaning of the word in bold.</p>
+    <p>「<b>割愛する</b>」の意味として最も適切なものを選びなさい。</p>
+    <ul class="choices">
+      <li>ア　いらないので捨てる</li>
+      <li>イ　惜しいと思いながら省く</li>
+      <li>ウ　他の人に分けてあげる</li>
+      <li>エ　大切に保管する</li>
+    </ul>
+    <details><summary>Show the answer</summary><p><b>イ</b>　割愛 means <b>to leave something out even though you'd rather keep it</b>. It does not mean "throw away because you don't need it" (ア) — that's the trap. The SPI loves to test the exact meaning of words you half-know.</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">Target: 60 sec</span>
+    <span class="tag">Verbal Q3 — Sentence ordering</span>
+    <p>Put ア–エ into an order that makes sense.</p>
+    <ul class="choices">
+      <li>ア　しかし、実際に導入してみると問題が見つかった。</li>
+      <li>イ　新しい制度が会議で提案された。</li>
+      <li>ウ　その結果、制度は半年で見直されることになった。</li>
+      <li>エ　多くの社員がこの案に賛成した。</li>
+    </ul>
+    <details><summary>Show the answer</summary><p><b>イ → エ → ア → ウ</b>　The trick is to <b>look at the connectives first</b>. しかし ("however") needs something positive before it; その結果 ("as a result") tends to come last. A sentence containing a pointing word (その, この) can never be the first one.</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">Target: 70 sec</span>
+    <span class="tag">Non-verbal Q4 — Profit and loss</span>
+    <p>An item has a cost price of 1,200 yen. The list price is set to include a <b>30% profit</b>. It doesn't sell, so it is sold at <b>20% off the list price</b>. How much profit is made?</p>
+    <p>原価1,200円の商品に、<b>3割の利益</b>を見込んで定価をつけた。しかし売れないので、<b>定価の2割引</b>で売った。このときの利益はいくらか。</p>
+    <details><summary>Show the answer</summary><p><b>48 yen</b><br>List price = 1200 × 1.3 = 1,560 yen<br>Selling price = 1560 × 0.8 = 1,248 yen<br>Profit = 1248 − 1200 = <b>48 yen</b><br>Note: the 30% profit is 30% of the <b>cost price</b>, while the 20% discount is 20% of the <b>list price</b>. Which number the percentage is based on is exactly where these questions catch people out.</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">Target: 80 sec</span>
+    <span class="tag">Non-verbal Q5 — Logical reasoning (most common type)</span>
+    <p>Four people — P, Q, R and S — took a test. No two of them scored the same.</p>
+    <p>Ⅰ　P scored higher than Q<br>Ⅱ　R scored higher than S<br>Ⅲ　Q scored higher than S</p>
+    <p>Which of the following is <b>certainly true</b>?</p>
+    <p>P、Q、R、Sの4人がテストを受けた。同じ点数の人はいない。<br>Ⅰ　PはQより点が高い<br>Ⅱ　RはSより点が高い<br>Ⅲ　QはSより点が高い<br>このとき<b>確実に言える</b>ことはどれか。</p>
+    <ul class="choices">
+      <li>ア　Pが1位である</li>
+      <li>イ　Sが4位である</li>
+      <li>ウ　QはRより点が高い</li>
+      <li>エ　Rが2位である</li>
+    </ul>
+    <details><summary>Show the answer</summary><p><b>イ (S is 4th)</b><br>Chain the conditions with inequality signs: P &gt; Q &gt; S, and R &gt; S. S is below all three others, so S must be 4th.<br>ア is wrong (R could be higher than P). ウ is wrong (nothing tells us how Q and R compare). エ is wrong too.<br><b>The pattern to remember: "certainly true" means that if you can build even one counter-example, the choice is wrong.</b></p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">Target: 60 sec</span>
+    <span class="tag">Non-verbal Q6 — Sets</span>
+    <p>100 people were surveyed. 60 like product A, 45 like product B, and 25 like both. How many like <b>neither</b>?</p>
+    <p>100人にアンケートをした。商品Aが好きな人は60人、商品Bが好きな人は45人、両方好きな人は25人だった。<b>どちらも好きではない人</b>は何人か。</p>
+    <details><summary>Show the answer</summary><p><b>20 people</b><br>Like at least one = 60 + 45 − 25 = 80 people<br>Like neither = 100 − 80 = <b>20 people</b><br>Add the two groups, then subtract the overlap once. Draw the diagram and it takes a second.</p></details>
+  </div>
+</section>
+
+<section style="border:2px solid var(--accent)">
+  <h2><span class="num">▶</span>Mock test drill (36 questions drawn from a bank of 167)</h2>
+  <p>After the lesson, use this page to practise under <b>the same rules as the real test</b>. Every question has its own time limit, the bar turns green → yellow → red, and <b>when time runs out it moves you to the next question automatically — you cannot go back</b>. Don't use a calculator; work on paper with a pencil.</p>
+  <p style="margin:16px 0 6px">
+    <a href="drill.html" style="display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:13px 26px">Open the mock test →</a>
+  </p>
+  <p style="font-size:14px;color:var(--sub);margin:0">Each run is 18 verbal and 18 non-verbal questions, drawn <b>at random from a bank of 167</b>, with questions you haven't seen yet given priority — so <b>you can keep practising on fresh questions</b>. You can also pick a single topic, or use the untimed practice mode. At the end you get your <b>accuracy by topic</b> plus an explanation for every question.</p>
+</section>
+
+<section>
+  <h2><span class="num">4</span>Patterns to memorise (memorise these, no exceptions)</h2>
+
+  <h3>Word-pair relationships — the six patterns</h3>
+  <table>
+    <tr><th>Synonym</th><td>永久 ： 恒久 (the same meaning)</td></tr>
+    <tr><th>Antonym</th><td>需要 ： 供給 (opposite meanings — demand : supply)</td></tr>
+    <tr><th>Category</th><td>果物 ： りんご (A includes B — fruit : apple)</td></tr>
+    <tr><th>Purpose / use</th><td>はさみ ： 切断 (B is what A is for — scissors : cutting)</td></tr>
+    <tr><th>Raw material</th><td>ぶどう ： ワイン (B is made from A — grapes : wine)</td></tr>
+    <tr><th>Job and workplace / a set</th><td>教師 ： 学校 ／ 針 ： 糸 (teacher : school ／ needle : thread)</td></tr>
+  </table>
+  <p><b>The trick:</b> before you look at the choices, <b>turn the relationship into a full sentence</b> — "A is the place where B works" — and then test each choice against that sentence. If you can say it as a sentence, you won't hesitate.</p>
+
+  <h3>Logical reasoning — the order to work in</h3>
+  <ol>
+    <li>Chain the conditions into <b>a single line of inequalities</b> (P &gt; Q &gt; S).</li>
+    <li>Anything that won't chain goes on <b>a separate line</b> (R &gt; S).</li>
+    <li>For each choice, <b>try to build one counter-example</b>. If you can, it's wrong; if you can't, it's right.</li>
+  </ol>
+
+  <h3>Money problems — circle the base number</h3>
+  <p>"30% of the cost price", "20% off the list price", "10% of the selling price" — always check <b>which number the percentage is based on</b>. Ninety percent of the SPI's traps are right here.</p>
+</section>
+
+<section>
+  <h2><span class="num">5</span>20 high-frequency SPI words</h2>
+  <table class="vocab2">
+    <tr><th>Word</th><th>Meaning (in Japanese)</th><th>English</th></tr>
+    <tr><td><b>割愛</b><br><span>かつあい</span></td><td>惜しみながら省く</td><td>to leave out something you would rather keep</td></tr>
+    <tr><td><b>示唆</b><br><span>しさ</span></td><td>それとなく示す</td><td>to hint at, to suggest indirectly</td></tr>
+    <tr><td><b>語弊</b><br><span>ごへい</span></td><td>誤解を招く言い方</td><td>wording that invites misunderstanding</td></tr>
+    <tr><td><b>拘泥</b><br><span>こうでい</span></td><td>必要以上にこだわる</td><td>to fixate on, to cling to excessively</td></tr>
+    <tr><td><b>逼迫</b><br><span>ひっぱく</span></td><td>余裕がなく追い詰められる</td><td>to become tight or strained (money, supply, schedule)</td></tr>
+    <tr><td><b>折衝</b><br><span>せっしょう</span></td><td>利害の異なる相手と交渉する</td><td>to negotiate with a party whose interests differ</td></tr>
+    <tr><td><b>進捗</b><br><span>しんちょく</span></td><td>物事の進み具合</td><td>progress (of a task or project)</td></tr>
+    <tr><td><b>遵守</b><br><span>じゅんしゅ</span></td><td>決まりを守る</td><td>to comply with rules</td></tr>
+    <tr><td><b>是正</b><br><span>ぜせい</span></td><td>悪い点を正す</td><td>to correct, to rectify</td></tr>
+    <tr><td><b>踏襲</b><br><span>とうしゅう</span></td><td>前のやり方を受け継ぐ</td><td>to carry on the previous approach</td></tr>
+    <tr><td><b>懸念</b><br><span>けねん</span></td><td>気がかり・心配</td><td>concern, misgiving</td></tr>
+    <tr><td><b>顕著</b><br><span>けんちょ</span></td><td>はっきり目立つ</td><td>marked, conspicuous</td></tr>
+    <tr><td><b>妥協</b><br><span>だきょう</span></td><td>折り合いをつける</td><td>to compromise, to meet halfway</td></tr>
+    <tr><td><b>定石</b><br><span>じょうせき</span></td><td>最善とされる決まったやり方</td><td>the standard, established best approach</td></tr>
+    <tr><td><b>便宜</b><br><span>べんぎ</span></td><td>都合がよいこと・特別な計らい</td><td>convenience; a special accommodation</td></tr>
+    <tr><td><b>逐次</b><br><span>ちくじ</span></td><td>順を追って次々に</td><td>one after another, sequentially</td></tr>
+    <tr><td><b>帰結</b><br><span>きけつ</span></td><td>行き着いた結果</td><td>the conclusion or outcome reached</td></tr>
+    <tr><td><b>憂慮</b><br><span>ゆうりょ</span></td><td>深く心配する</td><td>to be deeply concerned about</td></tr>
+    <tr><td><b>払拭</b><br><span>ふっしょく</span></td><td>すっかり取り除く</td><td>to wipe away completely, to dispel</td></tr>
+    <tr><td><b>一朝一夕</b><br><span>いっちょういっせき</span></td><td>わずかな期間</td><td>overnight, in a short time (usually with a negative: 一朝一夕にはできない)</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">6</span>Watch out for this in the personality test</h2>
+  <ul>
+    <li><b>There are no right answers</b> — but watch out for <b>contradictions</b>. The same question comes back in different wordings, so if you try to make yourself look good the numbers stop matching and your answers get flagged as unreliable.</li>
+    <li><b>People often run out of time.</b> Spend 2–3 seconds per item and go with your gut.</li>
+    <li>Don't drift into answering "yes" to everything or "no" to everything.</li>
+  </ul>
+</section>
+
+<section class="hw">
+  <h2><span class="num">7</span>Homework</h2>
+  <ol>
+    <li><b>Check the invitation email again</b> — (1) is the Japanese section really <b>12 minutes</b>, and not 60? (2) the official name of the test, (3) what to bring to the in-person part and whether a calculator is allowed, (4) whether there's a programming test. Tell me these first thing next lesson.</li>
+    <li><b>Do one run of the <a href="drill.html">mock test</a> in "real test" mode</b> — never mind the score; note down <b>which topics you ran out of time on</b>.</li>
+    <li><b>Read the 20 words aloud</b>, then write your own sentence using five of them (e.g. 「プロジェクトの<b>進捗</b>を報告しました」).</li>
+    <li><b>Do five logical reasoning questions.</b> Any free practice site is fine. It doesn't matter if you can't solve them — just send me <b>a photo of your notebook with the inequality diagrams</b> you drew.</li>
+    <li><b>Re-do the questions you got wrong today</b>, on your own, one more time.</li>
+  </ol>
+  <p style="margin-top:12px"><b>Next lesson:</b> a deep dive into logical reasoning (rankings, positions, who-is-lying) plus how to read long passages — the art of not reading all of it.</p>
+</section>
+
+<footer>
+  Yuuki @ Anime Sensei ／ SPI Prep Lesson 1 ／ 2026-08-15<br>
+  These are original practice questions written for this lesson. They are not questions from the actual exam.
+</footer>
+
+</div>
+<script>
+/* 同じURLのまま、日本語ブロックと英語ブロックを差し替える */
+(function(){
+  var btn=document.getElementById("langBtn");
+  function set(l){
+    var en=(l==="en");
+    document.getElementById("pgJa").hidden=en;
+    document.getElementById("pgEn").hidden=!en;
+    document.documentElement.lang=en?"en":"ja";
+    btn.textContent=en?"日本語":"English";
+    try{localStorage.setItem("spi_lang",l);}catch(e){}
+  }
+  btn.onclick=function(){ set(document.getElementById("pgEn").hidden?"en":"ja"); };
+  var saved="ja"; try{ saved=localStorage.getItem("spi_lang")||"ja"; }catch(e){}
+  set(saved);
+})();
+</script>
 </body>
 </html>
