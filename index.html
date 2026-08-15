@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPI対策 レッスン1｜Yuuki@Anime Sensei</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181d; --sub:#6b7280; --line:#e5e7eb;
+    --accent:#d7263d; --tint:#fff4f5; --paper:#ffffff; --soft:#f7f8fa;
+    --head:"M PLUS Rounded 1c",-apple-system,"Hiragino Sans",sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--soft); color:var(--ink);
+    font-family:var(--body); font-size:16px; line-height:1.8;
+    word-break:normal; overflow-wrap:break-word; word-break:auto-phrase; line-break:strict;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+  header{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:22px}
+  .eyebrow{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:.04em;margin:0 0 4px}
+  h1{font-family:var(--head);font-weight:800;font-size:2.1rem;line-height:1.3;letter-spacing:-.02em;margin:0 0 6px}
+  .en{color:var(--sub);font-size:14px;margin:0}
+  .meta{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:14px;color:var(--sub)}
+  section{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:18px}
+  h2{font-family:var(--head);font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+  h2 .num{color:var(--accent);font-size:.95rem}
+  h2 + .en{margin:0 0 16px}
+  h3{font-family:var(--head);font-weight:700;font-size:1.05rem;margin:22px 0 8px}
+  p{margin:0 0 12px}
+  ul,ol{margin:0 0 12px;padding-left:1.3em}
+  li{margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 14px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--soft);font-weight:700;white-space:nowrap}
+  .q{background:var(--tint);border:1px solid #f3d3d8;border-radius:12px;padding:16px 18px;margin:0 0 14px}
+  .q .tag{display:inline-block;background:var(--accent);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+  .q .time{float:right;font-size:12px;color:var(--accent);font-weight:700}
+  .q p:last-child{margin-bottom:0}
+  .choices{list-style:none;padding:0;margin:10px 0 0}
+  .choices li{padding:3px 0}
+  details{border-top:1px dashed #e6b8bf;margin-top:12px;padding-top:10px}
+  summary{cursor:pointer;font-weight:700;color:var(--accent);font-size:14px}
+  details p{margin:8px 0 0;font-size:14.5px}
+  .vocab{columns:2;column-gap:26px;font-size:14.5px}
+  .vocab div{break-inside:avoid;padding:4px 0;border-bottom:1px solid var(--line)}
+  .vocab b{font-weight:700}
+  .vocab span{color:var(--sub)}
+  .note{background:var(--soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14.5px;margin:14px 0}
+  .hw{border:2px solid var(--accent);border-radius:14px;padding:20px 22px;background:var(--paper)}
+  footer{text-align:left;color:var(--sub);font-size:13px;margin-top:26px}
+  @media(max-width:600px){.vocab{columns:1}h1{font-size:1.6rem}.wrap{padding:18px 14px 60px}}
+  @media print{body{background:#fff}section,header{break-inside:avoid;border-radius:0}details{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">SPI対策 レッスン 1 / SPI PREP LESSON 1</p>
+  <h1>SPIって何？ 30分で全体像＋弱点さがし</h1>
+  <p class="en">What is the SPI? Get the big picture and find your weak spots in 30 minutes.</p>
+  <div class="meta">2026年8月15日（土）12:00–12:30 ／ 講師：ユウキ（Yuuki @ Anime Sensei）</div>
+</header>
+
+<section>
+  <h2><span class="num">1</span>今日のゴール</h2>
+  <p class="en">Today's goals</p>
+  <ol>
+    <li><b>SPIの全体像を知る</b> — 何が出る？ 何分？ どこで受ける？</li>
+    <li><b>ミニ診断を解く</b> — 言語3問・非言語3問で「今どこが弱いか」を見つける</li>
+    <li><b>次の1ヶ月の学習プランを決める</b> — 宿題を持ち帰る</li>
+  </ol>
+  <div class="note">
+    <b>先に確認したいこと / Let's check first:</b><br>
+    ① 受験の予定日はいつ？<br>
+    ② <b>どのテスト？</b>（楽天は <b>SPI</b> のほか <b>eF-1G</b> という別のテストや英語が出ることがあります）<br>
+    ③ 受験方式は？（テストセンター／自宅WEB／ペーパー／会社で受験）／ 日本語で受験？<br>
+    ④ 今いちばん不安なのは「日本語を読むスピード」？ それとも「計算」？
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>SPIの全体像</h2>
+  <p class="en">The big picture</p>
+  <p>SPI（エスピーアイ）は、日本の多くの企業が採用選考で使う適性検査です。<b>「頭の良さ」より「速さと正確さ」を見るテスト</b>だと考えてください。大きく2つに分かれます。</p>
+  <table>
+    <tr><th>能力検査</th><td><b>言語</b>（日本語の力）＋<b>非言語</b>（算数・論理）。1問あたり<b>約1分</b>で解くスピード勝負。目安 約35分</td></tr>
+    <tr><th>性格検査</th><td>約300問の「はい／いいえ」型。約30分。正解はないが、<b>矛盾した回答</b>をすると信頼度が下がる</td></tr>
+  </table>
+  <p>※ 企業によって<b>英語（ENG）</b>や<b>構造的把握力</b>が追加されることがあります。時間・問題数は受験方式（テストセンター／WEB／ペーパー）で変わります。</p>
+
+  <h3>言語で出るもの / Verbal</h3>
+  <table>
+    <tr><th>二語の関係</th><td>「医者：病院」と同じ関係のペアを選ぶ</td></tr>
+    <tr><th>語句の意味・用法</th><td>「割愛する」の意味は？ その使い方は？</td></tr>
+    <tr><th>文の並べ替え</th><td>バラバラの文を意味が通る順に並べる</td></tr>
+    <tr><th>空欄補充・長文読解</th><td>接続詞を入れる／長い文章を読んで答える</td></tr>
+  </table>
+
+  <h3>非言語で出るもの / Non-verbal</h3>
+  <table>
+    <tr><th>推論</th><td>順位・位置・うそつき問題。<b>最頻出</b></td></tr>
+    <tr><th>お金の計算</th><td>損益算（原価・定価・利益）、料金の割引、分割払い</td></tr>
+    <tr><th>割合と比・集合</th><td>％の計算、ベン図で考える問題</td></tr>
+    <tr><th>場合の数・確率</th><td>順列・組み合わせ</td></tr>
+    <tr><th>表の読み取り</th><td>資料を見て数字を出す</td></tr>
+  </table>
+  <div class="note"><b>大事なポイント：</b>非言語の計算は<b>中学レベル</b>です。難しいのは計算そのものではなく、<b>日本語の問題文を速く正確に読むこと</b>。つまり、あなたの対策は「数学」ではなく「日本語 × 型の暗記」です。</div>
+</section>
+
+<section>
+  <h2><span class="num">3</span>ミニ診断テスト</h2>
+  <p class="en">Mini diagnostic test — answer out loud, don't worry about mistakes!</p>
+  <p>時間を計って解いてみましょう。答えは声に出してOK。間違えても大丈夫です（弱点を見つけるのが目的）。</p>
+
+  <div class="q">
+    <span class="time">目標 40秒</span>
+    <span class="tag">言語 Q1 二語の関係</span>
+    <p>最初に示された二語の関係を考え、同じ関係のものを選びなさい。</p>
+    <p><b>医者 ： 病院</b></p>
+    <ul class="choices">
+      <li>ア　教師 ： 学校</li>
+      <li>イ　看護師 ： 医者</li>
+      <li>ウ　患者 ： 診察</li>
+      <li>エ　病院 ： 建物</li>
+    </ul>
+    <details><summary>答えを見る</summary><p><b>ア（教師：学校）</b>　「その職業の人：働く場所」の関係。イは同僚、ウは動作、エは「含まれる」関係で別物です。</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">目標 30秒</span>
+    <span class="tag">言語 Q2 語句の意味</span>
+    <p>「<b>割愛する</b>」の意味として最も適切なものを選びなさい。</p>
+    <ul class="choices">
+      <li>ア　いらないので捨てる</li>
+      <li>イ　惜しいと思いながら省く</li>
+      <li>ウ　他の人に分けてあげる</li>
+      <li>エ　大切に保管する</li>
+    </ul>
+    <details><summary>答えを見る</summary><p><b>イ</b>　「割愛」は<b>惜しみながら省く</b>。「いらないから捨てる」ではないのがポイント。SPIは「なんとなく知っている言葉」の正確な意味を狙ってきます。</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">目標 60秒</span>
+    <span class="tag">言語 Q3 文の並べ替え</span>
+    <p>次のア〜エを意味が通るように並べ替えなさい。</p>
+    <ul class="choices">
+      <li>ア　しかし、実際に導入してみると問題が見つかった。</li>
+      <li>イ　新しい制度が会議で提案された。</li>
+      <li>ウ　その結果、制度は半年で見直されることになった。</li>
+      <li>エ　多くの社員がこの案に賛成した。</li>
+    </ul>
+    <details><summary>答えを見る</summary><p><b>イ → エ → ア → ウ</b>　コツは<b>接続詞を先に見る</b>こと。「しかし」は前に良い話が必要、「その結果」は最後に来やすい。指示語（その・この）がある文は先頭になりません。</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">目標 70秒</span>
+    <span class="tag">非言語 Q4 損益算</span>
+    <p>原価1,200円の商品に、<b>3割の利益</b>を見込んで定価をつけた。しかし売れないので、<b>定価の2割引</b>で売った。このときの利益はいくらか。</p>
+    <details><summary>答えを見る</summary><p><b>48円</b><br>定価 ＝ 1200 × 1.3 ＝ 1,560円<br>売値 ＝ 1560 × 0.8 ＝ 1,248円<br>利益 ＝ 1248 − 1200 ＝ <b>48円</b><br>※「3割の利益」は<b>原価</b>の3割、「2割引」は<b>定価</b>の2割。どちらを基準にするかが引っかけです。</p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">目標 80秒</span>
+    <span class="tag">非言語 Q5 推論（最頻出）</span>
+    <p>P、Q、R、Sの4人がテストを受けた。同じ点数の人はいない。</p>
+    <p>Ⅰ　PはQより点が高い<br>Ⅱ　RはSより点が高い<br>Ⅲ　QはSより点が高い</p>
+    <p>このとき<b>確実に言える</b>ことはどれか。</p>
+    <ul class="choices">
+      <li>ア　Pが1位である</li>
+      <li>イ　Sが4位である</li>
+      <li>ウ　QはRより点が高い</li>
+      <li>エ　Rが2位である</li>
+    </ul>
+    <details><summary>答えを見る</summary><p><b>イ（Sが4位）</b><br>不等号でつなぐ：P &gt; Q &gt; S、R &gt; S。Sは3人全員より下なので必ず4位。<br>アは×（RがPより高い場合がある）。ウは×（QとRの比較は情報がない）。エも×。<br><b>解き方の型：「確実に言える」＝反例が1つでも作れたら不正解。</b></p></details>
+  </div>
+
+  <div class="q">
+    <span class="time">目標 60秒</span>
+    <span class="tag">非言語 Q6 集合</span>
+    <p>100人にアンケートをした。商品Aが好きな人は60人、商品Bが好きな人は45人、両方好きな人は25人だった。<b>どちらも好きではない人</b>は何人か。</p>
+    <details><summary>答えを見る</summary><p><b>20人</b><br>どちらか好き ＝ 60 ＋ 45 − 25 ＝ 80人<br>どちらも好きでない ＝ 100 − 80 ＝ <b>20人</b><br>※ 足して引く（重なりを1回引く）。図を書けば一瞬です。</p></details>
+  </div>
+</section>
+
+<section style="border:2px solid var(--accent)">
+  <h2><span class="num">▶</span>本番形式の模試ドリル（167問から毎回36問）</h2>
+  <p class="en">Mock test — real test-center rules: a timer on every question, and no going back.</p>
+  <p>レッスンのあと、<b>本番と同じルール</b>で練習できるページを用意しました。1問ごとに制限時間があり、バーが緑→黄→赤に変わって、<b>時間切れになると自動で次の問題に進みます（戻れません）</b>。電卓は使わず、紙と鉛筆で解いてください。</p>
+  <p style="margin:16px 0 6px">
+    <a href="drill.html" style="display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:13px 26px">模試ドリルを開く →</a>
+  </p>
+  <p style="font-size:14px;color:var(--sub);margin:0">1回あたり言語18問／非言語18問。問題は<b>167問のバンクから毎回ランダム</b>に選ばれ、まだ解いていない問題が優先されるので、<b>何度でも新しい問題で練習できます</b>。分野だけ選ぶことも、時間無制限の「練習モード」で解くこともできます。終わると<b>分野別の正答率</b>と全問の解説が出ます。</p>
+</section>
+
+<section>
+  <h2><span class="num">4</span>覚える型（これだけは丸暗記）</h2>
+  <p class="en">Patterns to memorize</p>
+
+  <h3>二語の関係 — 6つのパターン</h3>
+  <table>
+    <tr><th>同義</th><td>永久 ： 恒久（意味が同じ）</td></tr>
+    <tr><th>対義</th><td>需要 ： 供給（反対の意味）</td></tr>
+    <tr><th>包含</th><td>果物 ： りんご（AはBを含む）</td></tr>
+    <tr><th>役目・用途</th><td>はさみ ： 切断（Aの目的がB）</td></tr>
+    <tr><th>原料</th><td>ぶどう ： ワイン（Aから作られる）</td></tr>
+    <tr><th>職業と場所／一組</th><td>教師 ： 学校 ／ 針 ： 糸</td></tr>
+  </table>
+  <p class="en">Tip: say the relation out loud as a full sentence first — "A is where B works" — then test each choice.</p>
+  <p><b>コツ：</b>まず「AはBの◯◯だ」と<b>文にしてから</b>選択肢を当てはめる。頭の中で文にできれば、迷いません。</p>
+
+  <h3>推論 — 手を動かす順番</h3>
+  <ol>
+    <li>条件を<b>不等号1本</b>でつなぐ（P &gt; Q &gt; S）</li>
+    <li>つながらない情報は<b>別の行</b>に書く（R &gt; S）</li>
+    <li>選択肢ごとに<b>反例を1つ作ってみる</b>。作れたら×、作れなければ○</li>
+  </ol>
+
+  <h3>お金の問題 — 基準を丸で囲む</h3>
+  <p>「原価の3割」「定価の2割引」「売値の1割」——<b>何を基準にした割合か</b>を必ずチェック。SPIの引っかけの9割はここです。</p>
+</section>
+
+<section>
+  <h2><span class="num">5</span>SPI頻出のことば 20</h2>
+  <p class="en">20 high-frequency SPI words</p>
+  <div class="vocab">
+    <div><b>割愛（かつあい）</b> <span>惜しみながら省く</span></div>
+    <div><b>示唆（しさ）</b> <span>それとなく示す</span></div>
+    <div><b>語弊（ごへい）</b> <span>誤解を招く言い方</span></div>
+    <div><b>拘泥（こうでい）</b> <span>必要以上にこだわる</span></div>
+    <div><b>逼迫（ひっぱく）</b> <span>余裕がなく追い詰められる</span></div>
+    <div><b>折衝（せっしょう）</b> <span>利害の異なる相手と交渉する</span></div>
+    <div><b>進捗（しんちょく）</b> <span>物事の進み具合</span></div>
+    <div><b>遵守（じゅんしゅ）</b> <span>決まりを守る</span></div>
+    <div><b>是正（ぜせい）</b> <span>悪い点を正す</span></div>
+    <div><b>踏襲（とうしゅう）</b> <span>前のやり方を受け継ぐ</span></div>
+    <div><b>懸念（けねん）</b> <span>気がかり・心配</span></div>
+    <div><b>顕著（けんちょ）</b> <span>はっきり目立つ</span></div>
+    <div><b>妥協（だきょう）</b> <span>折り合いをつける</span></div>
+    <div><b>定石（じょうせき）</b> <span>最善とされる決まったやり方</span></div>
+    <div><b>便宜（べんぎ）</b> <span>都合がよいこと・特別な計らい</span></div>
+    <div><b>逐次（ちくじ）</b> <span>順を追って次々に</span></div>
+    <div><b>帰結（きけつ）</b> <span>行き着いた結果</span></div>
+    <div><b>憂慮（ゆうりょ）</b> <span>深く心配する</span></div>
+    <div><b>払拭（ふっしょく）</b> <span>すっかり取り除く</span></div>
+    <div><b>一朝一夕（いっちょういっせき）</b> <span>わずかな期間</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">6</span>性格検査で気をつけること</h2>
+  <p class="en">About the personality section</p>
+  <ul>
+    <li><b>正解はない</b>。ただし<b>矛盾</b>には注意 — 似た質問が何度も形を変えて出るので、良く見せようとすると数字が合わなくなり「信頼できない回答」と判定されます。</li>
+    <li><b>時間が足りなくなりやすい</b>。1問2〜3秒、直感で進める。</li>
+    <li>極端に「すべて はい」「すべて いいえ」に寄せない。</li>
+  </ul>
+</section>
+
+<section class="hw">
+  <h2><span class="num">7</span>宿題 ／ Homework</h2>
+  <ol>
+    <li><b>受験の情報を確認する</b> — テストの種類（SPI か eF-1G か）・方式・時期・言語。次回いちばんに教えてください。</li>
+    <li><b><a href="drill.html">模試ドリル</a>を「本番モード」で1回やる</b> — 点数より、<b>どの分野で時間が足りなかったか</b>をメモしてください。</li>
+    <li><b>ことば20個</b>を音読して、5つを使って自分の文を書く（例：「プロジェクトの<b>進捗</b>を報告しました」）。</li>
+    <li><b>推論を5問</b>解く。無料の練習サイトでOK。解けなくてもよいので、<b>不等号の図を書いたノートの写真</b>を送ってください。</li>
+    <li><b>今日の間違えた問題</b>だけ、もう一度自力で解く。</li>
+  </ol>
+  <p style="margin-top:12px"><b>次回の予定：</b>推論を深掘り（順位・位置・うそつき）＋ 長文読解の読み方（全部読まない技術）</p>
+</section>
+
+<footer>
+  Yuuki @ Anime Sensei ／ SPI対策 レッスン1 ／ 2026-08-15<br>
+  ※この教材はレッスン用のオリジナル問題です。実際の試験問題ではありません。
+</footer>
+
+</div>
+</body>
+</html>

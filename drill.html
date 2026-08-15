@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPI模試ドリル｜Yuuki@Anime Sensei</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181d;--sub:#6b7280;--line:#e5e7eb;--accent:#d7263d;--tint:#fff4f5;
+    --paper:#fff;--soft:#f7f8fa;--ok:#0a8754;--ng:#d7263d;
+    --head:"M PLUS Rounded 1c",-apple-system,"Hiragino Sans",sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--soft);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8;word-break:normal;word-break:auto-phrase;overflow-wrap:break-word;line-break:strict}
+  .wrap{max-width:760px;margin:0 auto;padding:26px 18px 90px}
+  a{color:var(--accent)}
+  h1{font-family:var(--head);font-weight:800;font-size:1.9rem;line-height:1.3;letter-spacing:-.02em;margin:0 0 6px}
+  h2{font-family:var(--head);font-weight:800;font-size:1.25rem;letter-spacing:-.01em;margin:0 0 12px}
+  h3{font-family:var(--head);font-weight:700;font-size:1.02rem;margin:20px 0 8px}
+  .eyebrow{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:.04em;margin:0 0 4px}
+  .en{color:var(--sub);font-size:14px;margin:0 0 14px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:16px}
+  .note{background:var(--soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14.5px;margin:14px 0}
+  ul,ol{margin:0 0 12px;padding-left:1.25em}li{margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 12px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:var(--soft);font-weight:700;white-space:nowrap}
+  button{font-family:inherit;font-size:15px;cursor:pointer}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-weight:800;letter-spacing:.01em}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);font-weight:700}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .seg{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+  .seg button{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;color:var(--sub)}
+  .seg button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--tint)}
+
+  /* exam screen */
+  #exam{display:none}
+  .bar{position:sticky;top:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:14px;z-index:5}
+  .bar .row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--sub);font-weight:700}
+  .bar .cat{color:var(--accent)}
+  .track{height:9px;background:#eef0f3;border-radius:999px;margin-top:9px;overflow:hidden}
+  .fill{height:100%;width:100%;background:var(--ok);border-radius:999px;transition:width .25s linear,background .3s}
+  .fill.warn{background:#f5a524}.fill.dan{background:var(--ng)}
+  .passage{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;margin:0 0 14px}
+  .qtype{font-size:12.5px;font-weight:800;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;display:inline-block;margin-bottom:10px}
+  .qtext{font-size:17px;font-weight:700;line-height:1.75;margin:0 0 14px;white-space:pre-wrap}
+  .opts{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+  .opt{text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 15px;line-height:1.6}
+  .opt:hover{border-color:#c9ccd2}
+  .opt[aria-pressed="true"]{border-color:var(--accent);background:var(--tint)}
+  .opt.correct{border-color:var(--ok);background:#eefaf4}
+  .opt.wrong{border-color:var(--ng);background:var(--tint)}
+  .opt .mk{font-weight:800;margin-right:8px;color:var(--sub)}
+  .fb{border-top:1px dashed var(--line);padding-top:12px;font-size:14.5px;margin-bottom:16px}
+  .fb b.ok{color:var(--ok)}.fb b.ng{color:var(--ng)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .hint{font-size:13px;color:var(--sub)}
+
+  /* result */
+  #result{display:none}
+  .score{font-family:var(--head);font-weight:800;font-size:3.2rem;line-height:1.1;letter-spacing:-.03em;margin:6px 0}
+  .score small{font-size:1rem;color:var(--sub);font-weight:700}
+  .judge{display:inline-block;border-radius:999px;padding:5px 16px;font-weight:800;font-size:14px}
+  .judge.pass{background:#eefaf4;color:var(--ok)}
+  .judge.fail{background:var(--tint);color:var(--ng)}
+  .rev{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:14.5px}
+  .rev .h{font-weight:800;margin-bottom:6px}
+  .rev.miss{border-color:#f3d3d8;background:var(--tint)}
+  @media(max-width:600px){.wrap{padding:16px 13px 70px}h1{font-size:1.5rem}.qtext{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ START ============ -->
+<div id="start">
+  <p class="eyebrow">SPI 模試ドリル / MOCK TEST</p>
+  <h1>本番と同じ形式で解いてみる</h1>
+  <p class="en">Answer under real test-center conditions: one timer per question, no going back.</p>
+
+  <div class="card">
+    <h2>受ける前に</h2>
+    <div class="note">
+      <b>楽天の適性検査は1種類ではありません。</b><br>
+      応募先・時期によって <b>SPI</b>／<b>eF-1G</b>（楽天でよく使われる別のテスト）／英語（ENG）などが出ます。
+      <b>まず「どのテストを、どの方式で受けるのか」を必ず確認してください。</b>このドリルは <b>SPI</b> の対策です。
+    </div>
+    <h3>本番のルール（このドリルも同じにしてあります）</h3>
+    <ul>
+      <li><b>1問ごとに制限時間があります。</b>画面下のバーが 緑 → 黄 → 赤 と減っていきます</li>
+      <li><b>時間切れになると、答えていなくても自動で次の問題に進みます</b></li>
+      <li><b>前の問題には戻れません</b></li>
+      <li><b>電卓は使えません。</b>紙と鉛筆を用意して、筆算で計算してください</li>
+    </ul>
+    <h3>準備するもの / What you need</h3>
+    <p>紙・鉛筆・静かな部屋。<span class="en" style="display:inline">Paper, a pencil, and a quiet room. No calculator.</span></p>
+  </div>
+
+  <div class="card">
+    <h2>設定</h2>
+    <h3>分野 / Section</h3>
+    <div class="seg" id="secSel">
+      <button data-v="all" aria-pressed="true">全部（36問・約30分）</button>
+      <button data-v="言語" aria-pressed="false">言語だけ（18問）</button>
+      <button data-v="非言語" aria-pressed="false">非言語だけ（18問）</button>
+    </div>
+    <h3>モード / Mode</h3>
+    <div class="seg" id="modeSel">
+      <button data-v="real" aria-pressed="true">本番モード（時間制限・戻れない）</button>
+      <button data-v="practice" aria-pressed="false">練習モード（時間無制限・すぐ解説）</button>
+    </div>
+    <p style="margin-top:18px"><button class="btn" id="startBtn">はじめる / Start</button></p>
+    <p class="hint" id="bankInfo"></p>
+    <p class="hint">毎回ちがう問題が出ます（まだ解いていない問題が優先されます）。1回の出題数は36問のまま、分野の内訳も本番と同じ比率です。<br>
+      <button id="resetBtn" style="background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;font-size:13px">出題の履歴をリセット</button></p>
+    <p class="hint">※ 出題はレッスン用のオリジナル類題です。実際の試験問題ではありません。</p>
+  </div>
+
+  <p><a href="index.html">← レッスン1の教材にもどる</a></p>
+</div>
+
+<!-- ============ EXAM ============ -->
+<div id="exam">
+  <div class="bar">
+    <div class="row">
+      <span><span class="cat" id="bCat">言語</span> <span id="bIdx">1 / 36</span></span>
+      <span id="bClock">00:00</span>
+    </div>
+    <div class="track"><div class="fill" id="bFill"></div></div>
+  </div>
+  <div class="card">
+    <span class="qtype" id="qType"></span>
+    <div id="qPassage"></div>
+    <p class="qtext" id="qText"></p>
+    <div class="opts" id="qOpts"></div>
+    <div class="fb" id="qFb" style="display:none"></div>
+    <div class="foot">
+      <span class="hint" id="qHint">答えを選んでください</span>
+      <button class="btn" id="nextBtn" disabled>次へ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RESULT ============ -->
+<div id="result">
+  <div class="card">
+    <p class="eyebrow">結果 / RESULT</p>
+    <div class="score" id="rScore">0<small> / 0（0%）</small></div>
+    <p><span class="judge" id="rJudge">—</span> <span class="hint">目安：正答率7割が一般的なボーダーと言われます</span></p>
+    <p class="hint" id="rTime"></p>
+    <h3>分野別</h3>
+    <table id="rTable"></table>
+    <p style="margin-top:16px">
+      <button class="btn" id="againBtn">もう一度</button>
+      <button class="btn ghost" id="missBtn">間違えた問題だけやり直す</button>
+    </p>
+  </div>
+  <div class="card">
+    <h2>全問の解説</h2>
+    <div id="rReview"></div>
+    <p><a href="index.html">← レッスン1の教材にもどる</a></p>
+  </div>
+</div>
+
+</div>
+<script src="questions.js"></script>
+<script>
+/* ---------- 問題データ（オリジナル類題／本番の出題形式に準拠） ---------- */
+const Q=window.BANK||[];
+
+/* ---------- state ---------- */
+const $=id=>document.getElementById(id);
+let pool=[],i=0,ans=[],mode="real",sec="all",tId=null,left=0,startTs=0,clkId=null;
+
+function pressed(box,v){[...box.children].forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===v)))}
+$("secSel").onclick=e=>{if(e.target.dataset.v){sec=e.target.dataset.v;pressed($("secSel"),sec)}};
+$("modeSel").onclick=e=>{if(e.target.dataset.v){mode=e.target.dataset.v;pressed($("modeSel"),mode)}};
+$("startBtn").onclick=()=>{const d=draw(sec);if(!d.length){alert("問題データが読み込めませんでした");return}begin(d)};
+
+/* ---------- 出題の組み立て ----------
+   毎回ランダムに選ぶが、分野ごとの出題数は本番の構成に合わせて固定する。
+   同じ問題ばかり出ないよう、まだ解いていない問題を優先する（履歴はこのブラウザに保存）。 */
+const QUOTA={
+  "二語の関係":5,"語句の意味":4,"語句の用法":3,"文の並べ替え":2,"空欄補充":2,"長文読解":2,
+  "推論（順位）":1,"推論（位置）":1,"推論（内訳・数）":1,"推論（うそつき）":1,"推論（対戦）":1,"推論（命題）":1,
+  "損益算":2,"料金の割引":1,"代金の精算":1,"割合と比":2,"集合":2,"場合の数":1,"確率":1,"速度算":1,"表の読み取り":1
+};
+const SEEN_KEY="spi_seen_v1";
+function qid(q){let h=0;const s=q.t+"|"+q.q;for(let k=0;k<s.length;k++){h=(h*31+s.charCodeAt(k))|0}return String(h)}
+function seenMap(){try{return JSON.parse(localStorage.getItem(SEEN_KEY)||"{}")}catch(e){return{}}}
+function markSeen(list){const m=seenMap();list.forEach(q=>{m[qid(q)]=(m[qid(q)]||0)+1});try{localStorage.setItem(SEEN_KEY,JSON.stringify(m))}catch(e){}}
+function draw(scope){
+  const m=seenMap(),out=[];
+  Object.keys(QUOTA).forEach(t=>{
+    const cand=Q.filter(q=>q.t===t&&(scope==="all"||q.c===scope));
+    if(!cand.length)return;
+    // 出題回数が少ない順 → 同数ならランダム
+    const picked=cand.map(q=>({q,n:m[qid(q)]||0,r:Math.random()}))
+      .sort((a,b)=>a.n-b.n||a.r-b.r).slice(0,QUOTA[t]).map(x=>x.q);
+    out.push(...picked);
+  });
+  return out;
+}
+function bankInfo(){
+  const m=seenMap(),n=Q.length,done=Q.filter(q=>m[qid(q)]).length;
+  const el=$("bankInfo");
+  if(el)el.innerHTML="問題バンク <b>"+n+"問</b>（言語"+Q.filter(q=>q.c==="言語").length+"／非言語"+Q.filter(q=>q.c==="非言語").length+"）　"+
+    "これまでに解いた問題 <b>"+done+" / "+n+"問</b>";
+}
+$("resetBtn")&&($("resetBtn").onclick=()=>{if(confirm("出題の履歴を消します。よろしいですか？")){localStorage.removeItem(SEEN_KEY);bankInfo()}});
+bankInfo();
+$("againBtn").onclick=()=>{show("start")};
+$("missBtn").onclick=()=>{const m=pool.filter((q,k)=>ans[k]!==q.a);if(m.length)begin(m);else alert("全問正解でした！やり直す問題はありません。")};
+
+function show(id){["start","exam","result"].forEach(x=>$(x).style.display=x===id?"block":"none");window.scrollTo(0,0)}
+/* 選択肢はシャッフルする（正答の位置を覚えられないように） */
+function shuffle(q){
+  const idx=q.o.map((_,k)=>k);
+  for(let k=idx.length-1;k>0;k--){const r=Math.floor(Math.random()*(k+1));[idx[k],idx[r]]=[idx[r],idx[k]]}
+  return Object.assign({},q,{o:idx.map(k=>q.o[k]),a:idx.indexOf(q.a)});
+}
+function begin(list){markSeen(list);bankInfo();pool=list.map(shuffle);i=0;ans=[];startTs=Date.now();show("exam");clearInterval(clkId);clkId=setInterval(clock,1000);render()}
+function clock(){const s=Math.floor((Date.now()-startTs)/1000);$("bClock").textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+
+function render(){
+  const q=pool[i];
+  $("bCat").textContent=q.c;$("bIdx").textContent=(i+1)+" / "+pool.length;
+  $("qType").textContent=q.t;
+  $("qPassage").innerHTML=q.p?'<div class="passage">'+q.p.replace(/\n/g,"<br>")+'</div>':"";
+  $("qText").innerHTML=q.q.replace(/\n/g,"<br>");
+  $("qFb").style.display="none";$("qFb").innerHTML="";
+  $("nextBtn").disabled=true;
+  $("nextBtn").textContent=(i===pool.length-1)?"採点する":"次へ";
+  $("qHint").textContent=mode==="real"?"時間内に選んでください（戻れません）":"答えを選ぶとすぐに解説が出ます";
+  const box=$("qOpts");box.innerHTML="";
+  q.o.forEach((t,k)=>{
+    const b=document.createElement("button");
+    b.className="opt";b.setAttribute("aria-pressed","false");
+    b.innerHTML='<span class="mk">'+"アイウエオ"[k]+'</span>'+t;
+    b.onclick=()=>choose(k);
+    box.appendChild(b);
+  });
+  clearInterval(tId);
+  const bar=$("bFill");
+  if(mode==="real"){
+    left=q.s;bar.style.width="100%";bar.className="fill";
+    tId=setInterval(()=>{
+      left-=.1;
+      const r=Math.max(0,left/q.s);
+      bar.style.width=(r*100)+"%";
+      bar.className="fill"+(r<.2?" dan":r<.5?" warn":"");
+      if(left<=0){clearInterval(tId);timeUp()}
+    },100);
+  }else{bar.style.width="100%";bar.className="fill"}
+}
+
+function choose(k){
+  const q=pool[i];
+  if(ans[i]!==undefined&&mode==="practice")return;
+  ans[i]=k;
+  [...$("qOpts").children].forEach((b,n)=>b.setAttribute("aria-pressed",String(n===k)));
+  $("nextBtn").disabled=false;
+  if(mode==="practice"){
+    clearInterval(tId);
+    reveal();
+  }
+}
+function reveal(){
+  const q=pool[i],ok=ans[i]===q.a;
+  [...$("qOpts").children].forEach((b,n)=>{
+    b.disabled=true;
+    if(n===q.a)b.classList.add("correct");
+    else if(n===ans[i])b.classList.add("wrong");
+  });
+  $("qFb").style.display="block";
+  $("qFb").innerHTML=(ok?'<b class="ok">正解</b>':'<b class="ng">不正解</b>')+"　正答："+"アイウエオ"[q.a]+"<br>"+q.e;
+  $("nextBtn").disabled=false;
+}
+function timeUp(){
+  if(ans[i]===undefined)ans[i]=-1;
+  $("qHint").textContent="時間切れ — 次の問題へ進みます";
+  next();
+}
+$("nextBtn").onclick=()=>{if(mode==="real"&&ans[i]===undefined)return;next()};
+function next(){clearInterval(tId);if(i<pool.length-1){i++;render()}else finish()}
+
+function finish(){
+  clearInterval(tId);clearInterval(clkId);
+  const n=pool.length,ok=pool.filter((q,k)=>ans[k]===q.a).length,pct=Math.round(ok/n*100);
+  $("rScore").innerHTML=ok+'<small> / '+n+'（'+pct+'%）</small>';
+  const j=$("rJudge");
+  j.textContent=pct>=70?"ボーダーの目安に到達":"あと"+(Math.ceil(n*.7)-ok)+"問で7割";
+  j.className="judge "+(pct>=70?"pass":"fail");
+  const s=Math.floor((Date.now()-startTs)/1000);
+  $("rTime").textContent="所要時間 "+Math.floor(s/60)+"分"+(s%60)+"秒 ／ 1問あたり平均 "+Math.round(s/n)+"秒";
+  const by={};
+  pool.forEach((q,k)=>{(by[q.t]=by[q.t]||{n:0,o:0}).n++;if(ans[k]===q.a)by[q.t].o++});
+  let h="<tr><th>分野</th><th>正答</th><th>状況</th></tr>";
+  Object.keys(by).forEach(t=>{
+    const b=by[t],r=b.o/b.n;
+    h+="<tr><td>"+t+"</td><td>"+b.o+" / "+b.n+"</td><td>"+(r===1?"◎ 得意":r>=.5?"○ もう少し":"● 要対策")+"</td></tr>";
+  });
+  $("rTable").innerHTML=h;
+  $("rReview").innerHTML=pool.map((q,k)=>{
+    const ok=ans[k]===q.a,mine=ans[k]===-1||ans[k]===undefined?"（無回答・時間切れ）":"アイウエオ"[ans[k]]+"　"+q.o[ans[k]];
+    return '<div class="rev'+(ok?"":" miss")+'"><div class="h">'+(ok?"○":"×")+" 第"+(k+1)+"問　"+q.t+"</div>"+
+      (q.p?'<div class="passage">'+q.p.replace(/\n/g,"<br>")+"</div>":"")+
+      "<div>"+q.q.replace(/\n/g,"<br>")+"</div>"+
+      "<div style='margin-top:8px'>あなたの解答："+mine+"<br>正答："+"アイウエオ"[q.a]+"　"+q.o[q.a]+"</div>"+
+      "<div style='margin-top:8px'>"+q.e+"</div></div>";
+  }).join("");
+  show("result");
+}
+
+/* self-check: 全問に正答・選択肢・解説がそろっているか */
+console.assert(Q.length>0,"問題バンク(questions.js)が読み込めていません");
+console.assert(Q.every(q=>q.o.length>=4&&q.a>=0&&q.a<q.o.length&&q.e&&q.s>0),"問題データに不備があります");
+console.assert(Object.keys(QUOTA).every(t=>Q.some(q=>q.t===t)),"QUOTAにあるのにバンクに存在しない分野があります");
+</script>
+</body>
+</html>
